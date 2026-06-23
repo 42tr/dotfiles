@@ -1,9 +1,10 @@
 [env]
 TERM = "xterm-256color"
+# TERM = "screen-256color"
 
 [font]
 size = 14
-normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
 bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
@@ -11,10 +12,18 @@ bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
 [window]
 decorations = "None"
 option_as_alt = "Both"
-startup_mode = "Fullscreen"
+# startup_mode = "Fullscreen"
+startup_mode = "Maximized"
+# startup_mode = "SimpleFullscreen"
+dynamic_padding = true
+opacity = 0.9
+
+[window.padding]
+x = 0
+y = 0
 
 # Key bindings
-# A list with all available `key` names can be found here:
+# A list with all available `key` n
 # https://docs.rs/glutin/*/glutin/enum.VirtualKeyCode.html#variants
 #
 # Run "xxd -psd" to find hex codes of keys.
@@ -37,7 +46,7 @@ bindings = [
   { key = "T",        mods = "Command",       chars = "\u001cc"           }, # new tab with default shell
   { key = "T",        mods = "Command|Shift", chars = "\u001cC"           }, # new tab with commands menu
   { key = "N",        mods = "Command",       chars = "\u001cS"           }, # switch session in current window with local sessions menu
-  # { key = "N",        mods = "Command|Shift", command = { program = "/usr/local/bin/alacritty", args = ["msg", "create-window", "-e", "/usr/local/bin/fish", "--login", "--command", "tmux-sessions --all"] } }, # open session in new window with all sessions menu across servers
+  # { key = "N",        mods = "Command|Shift", command = { program = "/usr/local/bin/alacritty", args = ["msg", "create-window", "-e", "/bin/zsh", "--login", "tmux-sessions --all"] } }, # open session in new window with all sessions menu across servers
 
   # ----- close pane/tab/window -----
   { key = "W",        mods = "Command",       chars = "\u001cx"           }, # close the pane
@@ -109,9 +118,9 @@ bindings = [
 
 [terminal]
 
-# [terminal.shell]
-# args = ["--login", "--command", "tmux new-session -A -D -s main"]
-# program = "/usr/local/bin/fish"
+[terminal.shell]
+args = ["-f", "/Users/liuyang/.tmux.conf", "new-session", "-A", "-D", "-s", "main"]
+program = "/opt/homebrew/bin/tmux"
 
 [colors]
 draw_bold_text_with_bright_colors = false
